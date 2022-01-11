@@ -59,6 +59,26 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  position: relative;
+`;
+
+const CountContainer = styled.div`
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: teal;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: -7px;
+`;
+
+const Count = styled.h4`
+  font-size: 12px;
+  font-weight: 400;
 `;
 
 const Navbar = () => {
@@ -80,6 +100,9 @@ const Navbar = () => {
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
             <MdOutlineShoppingCart className="menu-icon" />
+            <CountContainer>
+              <Count>{4}</Count>
+            </CountContainer>
           </MenuItem>
         </Right>
       </Wrapper>
