@@ -4,6 +4,8 @@ import "./Navbar.scss";
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { mobile } from "../../responsive";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   height: 60px;
@@ -53,6 +55,11 @@ const Logo = styled.h1`
   ${mobile({ fontSize: "24px" })}
 `;
 
+const LogoLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -67,6 +74,11 @@ const MenuItem = styled.div`
   margin-left: 25px;
   position: relative;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+`;
+
+const SignLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 const CountContainer = styled.div`
@@ -84,11 +96,18 @@ const CountContainer = styled.div`
 `;
 
 const Count = styled.h4`
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
 `;
 
+const CartLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -100,17 +119,27 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Shopit.</Logo>
+          <LogoLink to="/">
+            <Logo>Shopit.</Logo>
+          </LogoLink>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-            <MdOutlineShoppingCart className="menu-icon" />
-            <CountContainer>
-              <Count>{4}</Count>
-            </CountContainer>
-          </MenuItem>
+          <SignLink to="/signup">
+            <MenuItem>SIGN UP</MenuItem>
+          </SignLink>
+          <SignLink to="/signin">
+            <MenuItem>SIGN IN</MenuItem>
+          </SignLink>
+          <CartLink to="/cart">
+            <MenuItem>
+              <MdOutlineShoppingCart className="menu-icon" />
+              {quantity > 0 && (
+                <CountContainer>
+                  <Count>{quantity}</Count>
+                </CountContainer>
+              )}
+            </MenuItem>
+          </CartLink>
         </Right>
       </Wrapper>
     </Container>

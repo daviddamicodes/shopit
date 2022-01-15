@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { HiOutlineHeart } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -66,6 +67,11 @@ const Icon = styled.div`
   }
 `;
 
+const PageLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 const Product = ({ item }) => {
   return (
     <Container>
@@ -76,7 +82,9 @@ const Product = ({ item }) => {
           <MdOutlineShoppingCart />
         </Icon>
         <Icon>
-          <IoMdSearch />
+          <PageLink to={`/product/${item._id}`}>
+            <IoMdSearch />
+          </PageLink>
         </Icon>
         <Icon>
           <HiOutlineHeart />
