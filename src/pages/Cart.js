@@ -9,7 +9,8 @@ import { useNavigate } from "react-router";
 
 // const KEY = process.env.REACT_STRIPE_KEY;
 
-const KEY = process.env.STRIPE_KEY;
+const KEY =
+  "pk_test_51J3iN8HSCTTYklXH3z5NEGBGIwu4hcro8KSfITNKe92i2CWRxZuB76TANJDHqYUjcrpVLKILetwIp4HDQce2SO1600YLHNpla9";
 
 const Container = styled.div``;
 
